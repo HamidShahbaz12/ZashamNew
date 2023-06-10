@@ -1,0 +1,75 @@
+﻿@page "/orderform"
+
+@using Microsoft.AspNetCore.Components.Forms;
+@using Zasham.Shared.Model;
+@inject HttpClient Http;
+
+<HeadContent>
+
+    <link rel="stylesheet" href="~/css/orderform.css" />
+    <link rel="stylesheet" href="~/css/allmens.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,400;1,100;1,400&family=Oswald&family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
+
+</HeadContent>
+
+<div class="headingofallmenslink">
+    <div class="new">
+        <a href="/" class="atag">Home</a> / <a href="/tshirts" class="atag">TShirts</a> / <a href="/orderform" class="atag">Order Form</a>
+    </div>
+
+</div>
+
+
+<h3 style="text-align: center; margin-top: 20px; margin-bottom: 20px; ">Order Form</h3>
+
+<EditForm Model="@customers" OnSubmit="@HandleOnSubmit">
+
+
+    <div class="orderform">
+        <label class="lbl"> Enter your Name</label><br />
+        <InputText id="custname" class="custname" @bind-Value="@customers.Customer_Name" placeholder="Enter your Name" required></InputText><br />
+        <label class="lbl">ID</label><br />
+        <InputText id="custid" class="custid_" @bind-Value="@customers.Customer_ID" placeholder="Enter your ID" required></InputText><br />
+        <label class="lbl">Phone Number</label><br />
+        <InputText id="custpn" class="custpn_" @bind-Value="@customers.Customer_PhoneNumber" placeholder="Enter your Phone Number" required></InputText><br />
+        <label class="lbl">City</label><br />
+        <InputText id="custcity" class="custcity_" @bind-Value="@customers.Customer_City" placeholder="Enter your City" required></InputText><br />
+        <label class="lbl">Address</label><br />
+        <InputText id="custad" class="custad_" @bind-Value="@customers.Customer_Address" placeholder="Enter your Address" required></InputText><br />
+        <label class="lbl">Instructions</label><br />
+        <InputText id="custins" class="custins_" @bind-Value="@customers.Customer_Instructions" placeholder="Delivery Instructions" required></InputText><br />
+        <button type="submit" class="sub-btn">Submit your Details</button>
+        <button type="reset" @onclick="@resetform" class="restbtn">RESET</button><br />
+        <label class="msg">Submission Messege:  @messege </label>
+    </div>
+    
+
+
+
+
+</EditForm>
+
+
+@code {
+    Customer customers = new Customer();
+    string messege = "";
+
+
+    async void HandleOnSubmit()
+    {
+        
+        var customer = await Http.PostAsJsonAsync<Customer>("api/Customers", customers);
+        
+            messege = "Submitted!!";
+       
+
+    }
+
+    void resetform()
+    {
+        messege = "Successfully RESET";
+    }
+
+
+}

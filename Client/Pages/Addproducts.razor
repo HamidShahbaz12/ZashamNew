@@ -1,0 +1,59 @@
+﻿@page "/addproducts"
+@using Zasham.Shared.Model;
+@using Microsoft.EntityFrameworkCore;
+@using Microsoft.AspNetCore.Components.Forms;
+@inject HttpClient Http
+
+
+<HeadContent>
+
+   
+    <link rel="stylesheet" href="~/css/addproducts.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,400;1,100;1,400&family=Oswald&family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
+
+</HeadContent>
+
+
+
+
+<h3 class="head3">Addproducts</h3>
+
+<EditForm Model="@product" OnSubmit="@HandleOnSubmit">
+
+    <div class="maincss">
+        <label>Product Name:</label><br />
+        <InputText id="p_name" class="p_name_" @bind-Value="product.product_name"></InputText><br />
+
+        <label>Product ID:</label><br />
+        <InputText id="p_id" class="p_id_" @bind-Value="product.product_id"></InputText><br />
+
+
+        <label>Product Price:</label><br />
+        <InputText id="p_price" class="p_price_" @bind-Value="product.product_price"></InputText><br />
+
+
+        <label>Product Description:</label><br />
+        <InputText id="p_desc" class="p_desc_" @bind-Value="product.product_description"></InputText><br />
+
+        <button type="submit" class="sbtn">SUBMIT</button>
+    </div>
+
+    
+
+</EditForm>
+
+@code{
+    Product product = new Product();
+
+
+    async void HandleOnSubmit()
+    {
+        
+        await Http.PostAsJsonAsync<Product>("api/Products", product);
+    }
+
+
+}
+
+

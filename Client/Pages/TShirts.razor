@@ -1,0 +1,92 @@
+﻿@page "/tshirts"
+@using Zasham.Shared.Model;
+@inject HttpClient Http;
+@inject NavigationManager NavigationManager
+
+<HeadContent>
+    <link rel="stylesheet" href="~/css/allmens.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,400;1,100;1,400&family=Oswald&family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
+</HeadContent>
+
+
+
+
+
+
+<div class="headingofallmenslink">
+    <div class="new">
+        <a href="/" class="atag">Home</a> / <a href="/allmens" class="atag">Mens</a> / <a href="/tshirts" class="atag">TShirts</a>
+    </div>
+
+</div>
+
+
+
+@if (products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <div class="subres">
+        <div class="results">
+            <table class="table" style="border: 1px solid black">
+                <thead style="border: 1px solid black">
+                    <tr>
+                        <th style="width: 100px; height: 30px; border: 1px solid black;">Name</th>
+                        <th style="width: 100px; height: 30px; border: 1px solid black;">ID</th>
+                        <th style="width: 500px; height: 30px; border: 1px solid black;">Description</th>
+                        <th style="width: 100px; height: 30px; border: 1px solid black;">Price</th>
+                        <th style="width: 100px; height: 30px; border: 1px solid black;">Buy Now</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in products)
+                    {
+                        <tr>
+                            <td style="width: 150px; height: 50px; border: 1px solid black; text-align: center;">@product.product_name</td>
+                            <td style="width: 150px; height: 50px; border: 1px solid black; text-align: center;">@product.product_id</td>
+                            <td style="width: 500px; height: 50px; border: 1px solid black; text-align: center;">@product.product_description</td>
+                            <td style="width: 150px; height: 50px; border: 1px solid black; text-align: center;">@product.product_price</td>
+                            <td style="width: 150px; height: 50px; border: 1px solid black; text-align: center;"><button @onclick="UserForm">ADD TO CART</button></td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    
+
+
+    
+}
+
+
+
+
+
+
+
+@code {
+    private Product[] products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await Http.GetFromJsonAsync<Product[]>("api/Products");
+
+    }
+
+    void UserForm()
+    {
+        NavigationManager.NavigateTo("/orderform");
+    }
+
+    
+
+}

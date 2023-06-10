@@ -1,0 +1,89 @@
+﻿.maincss{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.p_name_ {
+    width: 500px;
+    height: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+    .p_name_ :hover {
+        background-color: rgb(249,249,249);
+        transition: .1s;
+        border: 1px solid black;
+    }
+
+
+.p_id_ {
+    width: 500px;
+    height: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+    .p_id_ :hover {
+        background-color: rgb(249,249,249);
+        transition: .1s;
+        border: 1px solid black;
+    }
+
+
+.p_price_ {
+    width: 500px;
+    height: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+    .p_price_ :hover {
+        background-color: rgb(249,249,249);
+        transition: .1s;
+        border: 1px solid black;
+    }
+
+
+.p_desc_ {
+    width: 500px;
+    height: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+
+    .p_desc_ :hover {
+        background-color: rgb(249,249,249);
+        transition: .1s;
+        border: 1px solid black;
+    }
+
+
+
+.sbtn {
+    margin-top: 20px;
+    width: 300px;
+    height: 30px;
+}
+
+.head3 {
+    text-align: center;
+    margin-top: 30px;
+    font-family: 'Titillium Web', sans-serif;
+}

@@ -1,0 +1,71 @@
+@inject NavigationManager NavigationManager
+<HeadContent>
+
+    <link rel="stylesheet" href="~/css/nav.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,400;1,100;1,400&family=Oswald&family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
+</HeadContent>
+
+<div class="main-div">
+    <div class="logo">
+        <h3>ZASHAM ENTERPRISES</h3>
+    </div>
+    <div class="offer">
+        <p>Get Free Shipping on $100 and above orders</p>
+    </div>
+</div>
+
+
+
+<div class="navigation_menu">
+
+
+    <div class="insidenav">
+
+
+        <div class="dropdown">
+            <button class="dropbtn" @onclick="MensPage">Mens</button>
+            <div class="dropdown-content">
+                <a href="/tshirts">T Shirt</a>
+                <a href="/shorts">Shorts</a>
+                <a href="/hoodies">Hoodies</a>
+            </div>
+        </div>
+
+
+
+        <div class="dropdown">
+            <button class="dropbtn">Womens</button>
+            <div class="dropdown-content">
+                <a href="">T Shirts</a>
+                <a href="#">Hoodies</a>
+                <a href="#">Joggers</a>
+            </div>
+        </div>
+
+
+
+        <div class="dropdown">
+            <button class="dropbtn">Accessories</button>
+            <div class="dropdown-content">
+                <a href="#">Water Bottles</a>
+                <a href="#">Duffle Bags</a>
+                <a href="#">Book Bags</a>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+@code{
+    void MensPage()
+    {
+        NavigationManager.NavigateTo("/allmens");
+    }
+
+}
